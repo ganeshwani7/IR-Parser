@@ -1,16 +1,32 @@
+$ cat .gitignore
 *.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*.xlsx
 
 # Package Files #
 *.jar
 *.war
 *.ear
-.idea/*
-.idea
-*.zip
-#out/*
+!**/apose-cells-8.1.0.jar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# Eclipse project files
+.classpath
+.settings/
+.project
+.DS_Store
+.idea
+*.iml
+.vagrant
+
+#build
+target/
+tomcat.*/
+test-output/
+do_not_git/
+*.launch
+
+#Jrebel
+src/main/resources/rebel.xml
+atlassian-ide-plugin.xml
+
+#logs
+*.log
