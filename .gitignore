@@ -1,11 +1,13 @@
 $ cat .gitignore
 *.class
 *.xlsx
+*.docx
 
 # Package Files #
 *.jar
 *.war
 *.ear
+*.zip
 !**/apose-cells-8.1.0.jar
 
 # Eclipse project files
