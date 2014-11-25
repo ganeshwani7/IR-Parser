@@ -1,12 +1,12 @@
 
-<project name="parser" default="compile" basedir="." >
+<project name="parser.parser" default="compile" basedir="." >
 
     <property name="build.compiler" value="modern"/>
     <property name="src" value="src"/>
     <property name="BUILD" value="build"/>
     <property name="classes" value="${BUILD}/classes"/>
     <property name="javadoc" location="${BUILD}/doc"/>
-    <property name="tarballFileName" value="parser.tar.gz"/>
+    <property name="tarballFileName" value="parser.parser.tar.gz"/>
 
     <target name="compile"
             depends="parser"/>
@@ -32,9 +32,9 @@
     <!-- * means all files in the current directory -->
     <!-- for just java files use *.java -->
 
-    <target name="parser" depends="prepare">
+    <target name="parser.parser" depends="prepare">
         <javac srcdir="${src}"
-               includes="parser/**"
+               includes="parser.parser/**"
                excludes="**/package.html"
                destdir="${classes}"
                classpath="${classes}"
@@ -48,7 +48,7 @@
         <mkdir dir="${BUILD}/jar"/>
         <jar destfile="${BUILD}/jar/parser.jar" basedir="${BUILD}/classes">
             <manifest>
-                <attribute name="Main-Class" value="parser.Parser"/>
+                <attribute name="Main-Class" value="parser.parser.Parser"/>
             </manifest>
         </jar>
     </target>

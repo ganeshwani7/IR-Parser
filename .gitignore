@@ -8,6 +8,7 @@ $ cat .gitignore
 *.war
 *.ear
 *.zip
+*.bat
 !**/apose-cells-8.1.0.jar
 
 # Eclipse project files
@@ -15,11 +16,12 @@ $ cat .gitignore
 .settings/
 .project
 .DS_Store
-.idea
+.idea/
 *.iml
 .vagrant
 
 #build
+build/
 target/
 tomcat.*/
 test-output/
