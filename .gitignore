@@ -26,6 +26,7 @@ target/
 tomcat.*/
 test-output/
 do_not_git/
+out/
 *.launch
 
 #Jrebel
