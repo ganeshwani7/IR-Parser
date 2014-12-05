@@ -1,0 +1,36 @@
+$ cat .gitignore
+*.class
+*.xlsx
+*.docx
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.bat
+!**/apose-cells-8.1.0.jar
+
+# Eclipse project files
+.classpath
+.settings/
+.project
+.DS_Store
+.idea/
+*.iml
+.vagrant
+
+#build
+build/
+target/
+tomcat.*/
+test-output/
+do_not_git/
+*.launch
+
+#Jrebel
+src/main/resources/rebel.xml
+atlassian-ide-plugin.xml
+
+#logs
+*.log

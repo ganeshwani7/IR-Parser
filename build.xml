@@ -1,0 +1,74 @@
+
+<project name="parser.parser" default="compile" basedir="." >
+
+    <property name="build.compiler" value="modern"/>
+    <property name="src" value="src"/>
+    <property name="BUILD" value="build"/>
+    <property name="classes" value="${BUILD}/classes"/>
+    <property name="javadoc" location="${BUILD}/doc"/>
+    <property name="tarballFileName" value="parser.parser.tar.gz"/>
+
+    <target name="compile"
+            depends="parser"/>
+
+    <target name="clean">
+        <delete dir="${BUILD}"/>
+    </target>
+
+
+
+    <target name="doc" depends="prepare" description="generate documentation">
+        <javadoc sourcepath="${src}" destdir="${javadoc}"/>
+    </target>
+    <!-- Prepare target directories -->
+    <target name="prepare" depends="clean">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+        <mkdir dir="${javadoc}"/>
+    </target>
+
+
+    <!-- ** means all subdirectories as well -->
+    <!-- * means all files in the current directory -->
+    <!-- for just java files use *.java -->
+
+    <target name="parser.parser" depends="prepare">
+        <javac srcdir="${src}"
+               includes="parser.parser/**"
+               excludes="**/package.html"
+               destdir="${classes}"
+               classpath="${classes}"
+               debug="on"
+               optimize="on"
+               includeantruntime="false"
+               deprecation="off"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/parser.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="parser.parser.Parser"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="tar">
+        <tar destfile="./${tarballFileName}"
+             basedir="." compression="gzip"
+             includes="${src}/**, build.xml, README"/>
+    </target>
+
+
+    <target name="run" depends="jar">
+        <java jar="${BUILD}/jar/parser.jar"  fork="true">
+            <arg value="${arg0}"/>
+            <arg value="${arg1}"/>
+            <arg value="${arg2}"/>
+            <arg value="${arg3}"/>
+            <arg value="${arg4}"/>
+            <arg value="${arg5}"/>
+        </java>
+
+    </target>
+</project>
