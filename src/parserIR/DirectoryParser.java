@@ -28,7 +28,7 @@ public class DirectoryParser {
             } else {
                 // Add the file names in List
                 fileNames.add( fileEntry.getName());
-                System.out.println(fileEntry.getName());
+                //System.out.println(fileEntry.getName());
             }
         }
     }

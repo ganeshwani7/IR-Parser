@@ -40,10 +40,10 @@ public class Dictionary {
         }
 
         for (Posting posting : postingList) {
-            System.out.println(" Doc ID in :" + docIdIn + " posting doc ID " + posting.getDocId());
+            //System.out.println(" Doc ID in :" + docIdIn + " posting doc ID " + posting.getDocId());
             if (posting.getDocId() == docIdIn) {
                 isDocIdPresentInPosting = true;
-                System.out.println( "Setting term frequency as : " + (posting.getTermFrequency()+1));
+               // System.out.println( "Setting term frequency as : " + (posting.getTermFrequency()+1));
                 posting.setTermFrequency(posting.getTermFrequency() + 1);
                 break;
             }

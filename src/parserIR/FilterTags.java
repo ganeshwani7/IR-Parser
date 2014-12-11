@@ -58,9 +58,22 @@ public class FilterTags {
        totalString = totalString.replaceAll("!"," ");
        totalString = totalString.replaceAll("/"," ");
        totalString = totalString.replaceAll("\\?","");
+       totalString = totalString.replaceAll("\\$[^0-9]"," ");
+       //totalString = totalString.replaceAll("\\.[^0-9^a-z]*","");
+       totalString = totalString.replace("\'","");
+       totalString = totalString.replace("\"","");
+       totalString = totalString.replace("\\{","");
+       totalString = totalString.replace("\\}","");
+       totalString = totalString.replace("...","");
+       totalString = totalString.replace("\\`","");
+       totalString = totalString.replace("&","");
+       totalString = totalString.replace(";","");
+       //totalString = totalString.replace("[^0-9][*a-z]@[^0-9][*a-z]","");
+
+
 
        StringBuilder stringBuilder = new StringBuilder( totalString);
-
+       //stringBuilder = checkFirstDots(stringBuilder);
        for( int i =0; i< stringBuilder.length(); i++){
            char tempChar = stringBuilder.charAt(i);
            if( i+1 == stringBuilder.length()) {
@@ -186,4 +199,25 @@ public class FilterTags {
             listIterator.remove();
         }
    }
+
+    public StringBuilder checkFirstDots(StringBuilder str)
+    {
+        if(str.charAt(0)=='.')
+            str=removeFirstDots(str);
+
+        return str;
+    }
+
+    public StringBuilder removeFirstDots(StringBuilder str)
+    {
+        if(str.charAt(0)!='.')
+            return str;
+        else if(str.charAt(0)=='.')
+        {
+            str.setCharAt(0, ' ');
+            str = removeFirstDots(str);
+        }
+        return str;
+    }
+
 }

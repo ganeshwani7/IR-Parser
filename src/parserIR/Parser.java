@@ -11,11 +11,12 @@ public class Parser {
 
     public static void main(String []args){
 
-        if( args.length == 0){
-            System.out.println("Please enter even number of files");
+        if( args.length != 1){
+            System.out.println("Please enter folder name");
+            System.out.println(args[0]);
             System.exit(1);
         }
-        else if( args.length %2 !=0){
+        /*else if( args.length %2 !=0){
             System.out.println( "Please enter the input and output files in order");
             System.exit(1);
         }
@@ -28,8 +29,8 @@ public class Parser {
 //        for( int i =0; i< args.length; i++){
 //            System.out.println(args[i]);
 //        }
-
-        DirectoryParser directoryParser = new DirectoryParser("reviews");
+*/
+        DirectoryParser directoryParser = new DirectoryParser(args[0]);
         List<?> fileNames = directoryParser.getFileList();
 
         Dictionary dictionary = Dictionary.getDictionary();

@@ -24,7 +24,7 @@ public class FileWriter {
             e.printStackTrace();
             System.exit(1);
         }
-        System.out.println( "Writing doc table tokens");
+        //System.out.println( "Writing doc table tokens");
         Iterator iterator = docTable.entrySet().iterator();
         while ( iterator.hasNext()){
             Map.Entry pairs = (Map.Entry)iterator.next();
@@ -44,7 +44,7 @@ public class FileWriter {
             e.printStackTrace();
             System.exit(1);
         }
-        System.out.println( "Writing in Dictionary file");
+       // System.out.println( "Writing in Dictionary file");
         Iterator iterator = dictionaryMap.entrySet().iterator();
         int offset = 0;
         while ( iterator.hasNext()){
