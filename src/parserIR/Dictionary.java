@@ -53,9 +53,9 @@ public class Dictionary {
             postingList.add( new Posting( 1, docIdIn));
         }
 
-
         dictionary.put( key, postingList);
     }
+
 
     public void printDictionary () {
 //        System.out.println( dictionary);
