@@ -29,9 +29,13 @@ public class PopulateDictionary {
                 break;
             String [] tokens = line.split(" ");
             String key = tokens[0];
-            int iterations = Integer.parseInt( tokens[2]) - currentOffset;
-            currentOffset = Integer.parseInt( tokens[2]);
+//            int iterations = Integer.parseInt( tokens[2]) - currentOffset;
+ //           currentOffset = Integer.parseInt( tokens[2]);
 
+            int iterations = Integer.parseInt(tokens[1]);
+            if( key.equals("thriller")){
+                System.out.println("Yes thriller!!");
+            }
             int docId = 0;
             while( iterations-- != 0){
                 String postingLine = postingFileProcessor.readLineFromFile();
@@ -47,7 +51,7 @@ public class PopulateDictionary {
             }
         }
         populateDocTable();
-        System.out.println("I am done");
+//        System.out.println("I am done");
     }
 
     private void populateDocTable( ){
@@ -60,7 +64,7 @@ public class PopulateDictionary {
             String [] tokens = line.split(" ", 2);
             docTable.put( Integer.parseInt(tokens[0]), tokens[1]);
         }
-        System.out.println("HI");
+//        System.out.println("HI");
     }
 
     public Dictionary getDictionary(){

@@ -19,7 +19,13 @@ public class QueryHandler {
     }
 
     public void handleAndQuery(String query){
-
+        String []queryTerms = query.split(" ");
+        for( String queryTerm : queryTerms) {
+            List<Posting> docList = dictionary.getDictionaryMap().get(queryTerm);
+            for (Posting posting : docList) {
+                System.out.println(posting.getDocId());
+            }
+        }
     }
 
     public void handleOrQuery(String query){
