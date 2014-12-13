@@ -22,8 +22,10 @@ public class QueryHandler {
         List<Posting> result = new LinkedList<Posting>();
         List<Posting> firstDocList = dictionary.getDictionaryMap().get(queryTerms[0].toLowerCase());
 
-        for (Posting posting : firstDocList) {
-            result.add(posting);
+        if(firstDocList != null) {
+            for (Posting posting : firstDocList) {
+                result.add(posting);
+            }
         }
 
         if( queryTerms.length >1 ) {
@@ -60,8 +62,10 @@ public class QueryHandler {
         List<Posting> result = new LinkedList<Posting>();
         List<Posting> firstDocList = dictionary.getDictionaryMap().get(queryTerms[0].toLowerCase());
 
-        for (Posting posting : firstDocList) {
-            result.add(posting);
+        if( firstDocList != null) {
+            for (Posting posting : firstDocList) {
+                result.add(posting);
+            }
         }
 
         if( queryTerms.length >1 ) {
@@ -71,12 +75,16 @@ public class QueryHandler {
 
                 if (docList == null)
                     break;
+                if( result == null || result.size() == 0){
+                    result = docList;
+                }
                 int resultIndex = 0, index = 0;
                 while (index < docList.size() && resultIndex < result.size()) {
                     if (result.get(resultIndex).equals(docList.get(index))) {
                         resultIndex++;
                         index++;
-                    } else if (result.get(resultIndex).getDocId() < docList.get(index).getDocId()) {
+                    }
+                    else if (result.get(resultIndex).getDocId() < docList.get(index).getDocId()) {
                         while (resultIndex < result.size() &&
                                 result.get(resultIndex).getDocId() < docList.get(index).getDocId()) {
                             resultIndex++;

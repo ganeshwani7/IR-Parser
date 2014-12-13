@@ -1,6 +1,8 @@
 package parserIR;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
@@ -78,19 +80,21 @@ public class FileWriter {
     public void writeResults(List<Posting> postingList, Map<Integer,String>docTable){
             PrintWriter writer = null;
             try {
-                writer = new PrintWriter(resultFile);
+                writer = new PrintWriter(new BufferedWriter( new java.io.FileWriter(resultFile, true)));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 System.exit(1);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            //System.out.println( "Writing doc table tokens");
+        //System.out.println( "Writing doc table tokens");
             if( postingList!= null)
                 for( Posting posting : postingList){
                     writer.print( posting.getDocId() + " "+ docTable.get(posting.getDocId()) + "\n");
                     //System.out.println( posting.getDocId() + " "+ docTable.get(posting.getDocId()));
                 }
             else
-                writer.print( "No results");
+                writer.print("No results");
 //
 //            Iterator iterator = docTable.entrySet().iterator();
 //            while ( iterator.hasNext()){
@@ -98,5 +102,17 @@ public class FileWriter {
 //                writer.print( pairs.getKey() + " "+ pairs.getValue() + "\n");
 //            }
             writer.close();
+    }
+
+    public void writeQuery( String query){
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(resultFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        writer.print("Query : " + query  + "\n");
+        writer.close();
     }
 }

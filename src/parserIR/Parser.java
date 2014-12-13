@@ -75,6 +75,8 @@ public class Parser {
     }
 
     public static void handleQuery(String input){
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.writeQuery(input);
 
         if( input == null)
             return;
