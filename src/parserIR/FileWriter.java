@@ -84,10 +84,13 @@ public class FileWriter {
                 System.exit(1);
             }
             //System.out.println( "Writing doc table tokens");
-            for( Posting posting : postingList){
-                writer.print( posting.getDocId() + " "+ docTable.get(posting.getDocId()) + "\n");
-                //System.out.println( posting.getDocId() + " "+ docTable.get(posting.getDocId()));
-            }
+            if( postingList!= null)
+                for( Posting posting : postingList){
+                    writer.print( posting.getDocId() + " "+ docTable.get(posting.getDocId()) + "\n");
+                    //System.out.println( posting.getDocId() + " "+ docTable.get(posting.getDocId()));
+                }
+            else
+                writer.print( "No results");
 //
 //            Iterator iterator = docTable.entrySet().iterator();
 //            while ( iterator.hasNext()){
