@@ -33,9 +33,9 @@ public class PopulateDictionary {
  //           currentOffset = Integer.parseInt( tokens[2]);
 
             int iterations = Integer.parseInt(tokens[1]);
-            if( key.equals("thriller")){
-                System.out.println("Yes thriller!!");
-            }
+ //           if( key.equals("thriller")){
+ //               System.out.println("Yes thriller!!");
+ //           }
             int docId = 0;
             while( iterations-- != 0){
                 String postingLine = postingFileProcessor.readLineFromFile();

@@ -54,6 +54,7 @@ public class Parser {
         queryHandler.initialize( populateDictionary.getDictionary(), populateDictionary.getDocTable());
         Scanner scanner = new Scanner(System.in);
         while(true) {
+            System.out.println("Please enter your query : ");
             String input = scanner.nextLine();
             if( input.toLowerCase().equals("exit") ){
                 System.exit(1);
@@ -78,9 +79,9 @@ public class Parser {
         if( input == null)
             return;
         String []queryType = input.split(" ", 2);
-        if( queryType[0].toLowerCase() == "or"){
-            queryHandler.handleOrQuery( queryType[1]);
-        }else if( queryType[0].toLowerCase() == "and"){
+        if( queryType[0].toLowerCase().equals("or")){
+            queryHandler.handleOrQuery(queryType[1]);
+        }else if( queryType[0].toLowerCase().equals("and")){
             queryHandler.handleAndQuery(queryType[1]);
         }
         else{

@@ -32,4 +32,9 @@ public class Posting {
     public void setDocId(int docId) {
         this.docId = docId;
     }
+
+    @Override
+    public boolean equals(Object object){
+        return  this.getDocId() == ((Posting)object).getDocId();
+    }
 }

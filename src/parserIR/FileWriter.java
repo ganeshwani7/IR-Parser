@@ -13,6 +13,7 @@ public class FileWriter {
     String dictionaryFile = "Dictionary.txt";
     String postingFile = "Postings.txt";
     String docTableFile = "DocsTable.txt";
+    String resultFile = "output.txt";
 
     FileWriter(){}
 
@@ -72,5 +73,27 @@ public class FileWriter {
         writeDocTable(docTable);
         writeDictionaryAndPostingList(dictionary);
         writePostingList();
+    }
+
+    public void writeResults(List<Posting> postingList, Map<Integer,String>docTable){
+            PrintWriter writer = null;
+            try {
+                writer = new PrintWriter(resultFile);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.exit(1);
+            }
+            //System.out.println( "Writing doc table tokens");
+            for( Posting posting : postingList){
+                writer.print( posting.getDocId() + " "+ docTable.get(posting.getDocId()) + "\n");
+                //System.out.println( posting.getDocId() + " "+ docTable.get(posting.getDocId()));
+            }
+//
+//            Iterator iterator = docTable.entrySet().iterator();
+//            while ( iterator.hasNext()){
+//                Map.Entry pairs = (Map.Entry)iterator.next();
+//                writer.print( pairs.getKey() + " "+ pairs.getValue() + "\n");
+//            }
+            writer.close();
     }
 }
